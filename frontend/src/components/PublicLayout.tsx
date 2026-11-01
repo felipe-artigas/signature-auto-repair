@@ -155,7 +155,8 @@ function Footer() {
       </div>
       <div className="border-t border-line">
         <p className="container-x py-6 text-xs text-silver">
-          {year} Signature Auto Repair. Todos los derechos reservados.
+          {year} Signature Auto Repair. Todos los derechos reservados. Proyecto de demostración: los datos de contacto son
+          ficticios.
         </p>
       </div>
     </footer>
