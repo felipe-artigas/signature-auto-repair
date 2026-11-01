@@ -12,7 +12,7 @@ export const NAV_ITEMS = [
   { href: '/#nosotros', label: 'Nosotros' },
   { href: '/#servicios', label: 'Servicios' },
   { href: '/#especialidades', label: 'Especialidades' },
-  { href: '/#proceso', label: 'Nuestro proceso' },
+  { href: '/#proceso', label: 'Proceso' },
   { href: '/#contacto', label: 'Contacto' },
 ]
 
