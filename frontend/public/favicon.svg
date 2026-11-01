@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Signature Auto Repair">
+  <rect width="64" height="64" rx="14" fill="#111315"/>
+  <g fill="none" stroke="#C6A56B" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 7.5 53.2 19.75v24.5L32 56.5 10.8 44.25v-24.5Z" stroke-width="3.2"/>
+    <circle cx="32" cy="32" r="10.5" stroke-width="3.2"/>
+    <path d="M32 15.5v4.5M46.3 40.25l-3.9-2.25M17.7 40.25l3.9-2.25" stroke-width="3.2"/>
+  </g>
+  <circle cx="32" cy="32" r="3.4" fill="#D8C49A"/>
+</svg>
