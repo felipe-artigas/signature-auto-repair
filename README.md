@@ -2,7 +2,7 @@
 
 Aplicación web para un taller de vehículos de alta gama. Tiene un sitio público con un asistente de recepción con inteligencia artificial (OpenAI, con tool calling) y un panel privado para gestionar consultas, clientes, vehículos, turnos y seguimiento comercial.
 
-- Producción: http://149.50.152.28 (y https://dwday-124673558.online cuando el DNS esté activo)
+- Producción: https://dwday-124673558.online (HTTPS con Let's Encrypt, HTTP/2 y HSTS)
 - Panel: `/admin`
 
 ## Arquitectura
