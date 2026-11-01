@@ -171,3 +171,24 @@ def test_rate_limit_on_conversation_start(client):
         for _ in range(11)
     ]
     assert codes[-1] == 429
+
+
+def test_settings_and_services_roundtrip(admin_client):
+    settings = admin_client.get("/api/admin/settings").json()
+    settings["contact"]["phone"] = "+54 341 456-2870"
+    settings["weekly_schedule"]["6"] = [["10:00", "12:00"]]
+    settings["closed_dates"] = ["2026-12-25"]
+    saved = admin_client.put("/api/admin/settings", json=settings)
+    assert saved.status_code == 200, saved.text
+    assert saved.json()["weekly_schedule"]["6"] == [["10:00", "12:00"]]
+    site = admin_client.get("/api/public/site").json()
+    assert site["contact"]["phone"] == "+54 341 456-2870"
+    bad = dict(settings, weekly_schedule={**settings["weekly_schedule"], "0": [["18:00", "09:00"]]})
+    assert admin_client.put("/api/admin/settings", json=bad).status_code == 422
+
+    service = admin_client.get("/api/admin/services").json()["items"][0]
+    patched = admin_client.patch(f"/api/admin/services/{service['id']}", json={"price_info": "Desde ARS 150.000", "is_active": False})
+    assert patched.status_code == 200
+    public_slugs = {s["slug"] for s in admin_client.get("/api/public/site").json()["services"]}
+    assert service["slug"] not in public_slugs
+    assert admin_client.get("/api/admin/vehicles?q=porsche").status_code == 200

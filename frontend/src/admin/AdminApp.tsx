@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 
 import { api, errorMessage, setCsrfToken } from '../lib/api'
 import { Logo } from '../components/Logo'
+import { Services, SettingsPanel, Vehicles } from './AdminExtra'
 
 type Admin = { id: number; email: string; full_name: string; csrf_token: string }
-type Tab = 'dashboard' | 'requests' | 'customers' | 'agenda' | 'radar'
+type Tab = 'dashboard' | 'requests' | 'customers' | 'vehicles' | 'agenda' | 'radar' | 'services' | 'settings'
 
 const STATUSES = ['nueva', 'en_revision', 'esperando_informacion', 'contactado', 'presupuesto_pendiente', 'aprobado', 'rechazado', 'finalizado']
 const STATUS_LABEL: Record<string, string> = {
@@ -283,7 +284,10 @@ function Radar() {
   )
 }
 
-const TABS: [Tab, string][] = [['dashboard', 'Dashboard'], ['requests', 'Consultas'], ['customers', 'Clientes'], ['agenda', 'Agenda'], ['radar', 'Radar comercial']]
+const TABS: [Tab, string][] = [
+  ['dashboard', 'Dashboard'], ['requests', 'Consultas'], ['customers', 'Clientes'], ['vehicles', 'Vehículos'], ['agenda', 'Agenda'],
+  ['radar', 'Radar comercial'], ['services', 'Servicios'], ['settings', 'Configuración'],
+]
 
 export default function AdminApp() {
   const [admin, setAdmin] = useState<Admin | null>(null)
@@ -322,6 +326,9 @@ export default function AdminApp() {
         {tab === 'customers' && <Customers />}
         {tab === 'agenda' && <Agenda />}
         {tab === 'radar' && <Radar />}
+        {tab === 'vehicles' && <Vehicles />}
+        {tab === 'services' && <Services />}
+        {tab === 'settings' && <SettingsPanel />}
       </main>
     </div>
   )
