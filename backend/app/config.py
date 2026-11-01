@@ -71,8 +71,5 @@ def get_settings() -> Settings:
         if settings.secret_key == "dev-only-change-me" or len(settings.secret_key) < 32:
             raise RuntimeError("SECRET_KEY debe definirse con al menos 32 caracteres en producción.")
         if not settings.cookie_secure:
-            # Solo admisible mientras el sitio no tenga HTTPS; las cookies viajarían sin cifrar.
-            import logging
-
-            logging.getLogger("signature").warning("COOKIE_SECURE=false en producción: habilitar al activar HTTPS.")
+            raise RuntimeError("COOKIE_SECURE debe ser true en producción.")
     return settings
