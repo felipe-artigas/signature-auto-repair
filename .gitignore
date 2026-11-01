@@ -1,0 +1,33 @@
+# Secretos y configuración local
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_*
+
+# Datos
+backend/data/
+*.db
+*.db-*
+*.sqlite*
+backups/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Node / build
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+lighthouse/*.json
+
+# Editor / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
