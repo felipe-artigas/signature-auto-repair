@@ -1,0 +1,23 @@
+[Unit]
+Description=Signature Auto Repair API (FastAPI)
+After=network.target
+
+[Service]
+User=signature
+Group=signature
+WorkingDirectory=/srv/signature/backend
+EnvironmentFile=/srv/signature/backend/.env
+ExecStart=/srv/signature/backend/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1 --proxy-headers --forwarded-allow-ips 127.0.0.1 --no-server-header
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/signature/data /srv/signature/backups
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
